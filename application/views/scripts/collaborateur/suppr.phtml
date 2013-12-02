@@ -1,0 +1,60 @@
+<?php
+    $session = new Zend_Session_Namespace('identity');
+    if($session->idProfil == 2)
+    {
+        if(empty($this->allClients))
+        {
+            echo('il n\' ya aucun collaborateur');
+        }
+        else
+        { ?>
+
+
+<form action="<?php echo $this->baseUrl ?>/collaborateur/suppr" method="post">
+<table border = "1">
+	<caption>Clients</caption>
+    <thead>
+        <tr>
+        	<th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse</th>
+            <th>Téléphone</th>
+            <th>Mail</th>
+            <th>Intitulé de Poste</th>
+            <th>Compétences Fonctionnelles</th>
+            <th>Compétences Techniques</th>
+        </tr>
+    </thead>
+    <tfoot>
+     <!-- //<tfoot> is optionnal but if you want it, you NEED to place it before <tbody> --> 
+
+    </tfoot>
+    <tbody>
+    <?php 
+    foreach($this->allCollaborateur as $collaborateur) {
+        echo '<tr>';
+        echo "<td><input type=\"radio\" name=\"id\" value=\"". $this->escape($collaborateur['id']) ."\" /></td>";
+        echo '<td>' . $this->escape($collaborateur['nom']) . '</td>';
+        echo '<td>' . $this->escape($collaborateur['prenom']) . '</td>';
+        echo '<td>' . $this->escape($collaborateur['adresse']) . '</td>';
+        echo '<td>' . $this->escape($collaborateur['telephone']) . '</td>';
+        echo '<td>' . $this->escape($collaborateur['mail']) . '</td>';
+        echo '<td>' . $this->escape($collaborateur['intitule']) . '</td>';
+        echo '<td>' . $this->escape($collaborateur['competencesf']) . '</td>';
+        echo '<td>' . $this->escape($collaborateur['competencest']) . '</td>';
+        echo '</tr>';
+    }
+    ?>
+    </tbody>
+</table>
+
+<td><input type="submit" name="suppr" value="Supprimer" /></td>
+
+<?php 
+        }
+    }
+    else
+    {
+        echo('<h2> Vous n\'avez pas les droits pour accéder à cette page. <h2/>');
+    }
+ ?>

@@ -1,0 +1,25 @@
+<?php
+    $session = new Zend_Session_Namespace('identity');
+    if($session->idProfil == 2)
+    {
+      ?>
+<h3>Liste des congés à valider</h3>
+
+<?php 
+        foreach($this->allConges as $conges) {  
+        echo '<div class="conges">
+            Type de Congé :' . $this->escape($conges['idType']) . '
+            Collaborateur :' . $this->escape($conges['idIdentite']) . '
+            Premier Jour de Congé : ' . $this->escape($conges['debut']) . ' 
+            Dernier Jour de Congé : ' . $this->escape($conges['fin']) . '
+            Journée/Matinée/Après-Midi : ' . $this->escape($conges['journee']) . '
+            Etat :' . $this->escape($conges['validation']) . ' 
+        </div>';
+        }?>
+<?php 
+    }
+    else
+    {
+        echo('<h2> Vous n\'avez pas les droits pour accéder à cette page. <h2/>');
+    }
+ ?> 

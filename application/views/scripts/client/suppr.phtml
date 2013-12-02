@@ -1,0 +1,56 @@
+<?php
+    $session = new Zend_Session_Namespace('identity');
+    if($session->idProfil == 2)
+    {
+        if(empty($this->allClients))
+        {
+            echo('il n\' ya aucun client');
+        }
+        else
+        { ?>
+<table>
+<form action="<?php echo $this->baseUrl ?>/client/suppr" method="post">
+	<caption>Clients</caption>
+    <thead>
+        <tr>
+        	<th></th>
+            <th>Nom</th>
+            <th>Secteur</th>
+            <th>Siège</th>
+            <th>Contact Principal</th>
+            <th>Téléphone (Principal)</th>
+            <th>Mail (Principal)</th>
+        </tr>
+    </thead>
+    <tfoot>
+     <!-- //<tfoot> is optionnal but if you want it, you NEED to place it before <tbody> --> 
+
+    </tfoot>
+    <tbody>
+    <?php 
+    foreach($this->allClients as $client) {
+        echo '<tr>';
+        echo "<td><input type=\"radio\" name=\"id\" value=\"". $this->escape($client['id']) ."\" /></td>";
+        echo '<td>' . $this->escape($client['nom']) . '</td>';
+        echo '<td>' . $this->escape($client['secteur']) . '</td>';
+        echo '<td>' . $this->escape($client['siege']) . '</td>';
+        echo '<td>' . $this->escape($client['contactp']) . '</td>';
+        echo '<td>' . $this->escape($client['telp']) . '</td>';
+        echo '<td>' . $this->escape($client['mailp']) . '</td>';
+        echo '</tr>';
+    }
+    ?>
+    </tbody>
+</table>
+<p>
+    <input class="submit" name="submit" type="submit" value="Submit">
+</p>
+</form>
+<?php 
+        }
+    }
+    else
+    {
+        echo('<h2> Vous n\'avez pas les droits pour accéder à cette page. <h2/>');
+    }
+ ?>

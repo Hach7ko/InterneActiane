@@ -1,0 +1,110 @@
+<?php
+	$session = new Zend_Session_Namespace('identity');
+	if($session->idProfil == 2)
+	{
+?>
+
+<div class="ajoutCollaborateur">
+	<form action="<?php echo $this->baseUrl ?>/collaborateur/ajout" method="post">
+
+	<p>
+		<label for="nom">Nom</label>
+		<input type="text" name="nom" value="" required="required"/>
+		
+		<label for="prenom">Prénom</label>
+		<input type="text" name="prenom" value="" required="required"/>
+
+		<label for="acronyme">Acronyme</label>
+		<input type="text" name="acronyme" value="" required="required"/>
+	</p>
+
+	<p>
+		<label for="naissance">Date de Naissance</label>
+		<input type="date" name="naissance" value="" required="required"/>
+
+		<label for="lieu">Lieu de naissance</label>
+		<input type="text" name="lieu" value="" required="required"/>
+	</p>
+	<p>
+		<label for="adresse">Adresse Postale</label>
+		<input type="text" name="adresse" value="" required="required"/>
+	</p>
+
+	<p>
+		<label for="tel">Téléphone</label>
+		<input type="tel" name="tel" value="" required="required"/>
+	</p>
+	<p>
+		<label for="mail">Mail</label>
+		<input type="text" name="mail" value="" required="required"/>
+	</p>
+
+	<p>
+		<label for="entree">Date d'entrée</label>
+		<input type="date" name="entree" value="" required="required"/>
+	</p>
+
+	<p>
+		<label for="intitule">Intitulé de poste</label>
+		<input type="text" name="intitule" value="" required="required"/>
+	</p>
+	<p>
+		Statut
+		 <input type="radio" name="statut" value="etam" cheked/> <label for="statut">ETAM</label>
+	       <input type="radio" name="statut" value="ic"/> <label for="statut">IC</label><br />
+	</p><p>
+		<label for="position">Position</label>
+		<input type="text" name="position" value="" required="required"/>
+	</p>
+	<p>
+		<label for="coefficient">Coefficient</label>
+		<input type="text" name="coefficient" value="" required="required"/>
+	</p>
+
+	<p>
+		<label for="compétencesF">Compétences Fonctionnelles</label>
+		<input type="text" name="compétencesF" value="" required="required"/>
+	</p>
+	<p>
+		<label for="compétencesT">Compétences Techniques</label>
+		<input type="text" name="compétencesT" value="" required="required"/>
+	</p>
+
+	<p>
+		<label for="equipe">Equipe</label>
+		<input type="text" name="equipe" value="" required="required"/>
+	</p>
+	<p>
+		<label for="responsable">Responsable</label>
+		<input type="text" name="responsable" value="" required="required"/>
+	</p>
+
+	<p>
+		<label for="tjm">TJM Minimum</label>
+		<input type="text" name="tjm" value="" required="required"/>
+	</p>
+	<p>
+		<label>Droits</label>
+		<select name="droits" required="required">
+		<?php 
+	    foreach($this->allProfil as $profil)
+	    {
+	    	$libelle = $this->escape($profil['libelle']);
+	    	echo("<option value='$libelle'>$libelle</option>");
+	    }?>
+
+		<select/>
+	</p>
+
+	<p>
+		<input class="submit" name="submit" type="submit" value="Submit">
+	</p>
+	</form>
+</div>
+<?php
+	}
+	else
+	{
+		echo('<h2> Vous n\'avez pas les droits pour accéder à cette page. <h2/>');
+	}
+?>

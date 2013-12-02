@@ -1,0 +1,51 @@
+<table>
+    <form action="<?php echo $this->baseUrl ?>/projet/suivi" method="post">
+	<caption>Projets</caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nom du Client</th>
+            <th>Nom du Projet</th>
+            <th>Référent</th>
+            <th>Format</th>
+            <th>Numéro de Contrat</th>
+            <th>Durée</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Responsable</th>
+            <th>Collaborateurs</th>
+            <th>Budget</th>
+            <th>Délai</th>
+        </tr>
+    </thead>
+    <tfoot>
+     <!-- //<tfoot> is optionnal but if you want it, you NEED to place it before <tbody> --> 
+
+    </tfoot>
+    <tbody>
+    <?php 
+    foreach($this->allProjets as $projet) {
+        echo '<tr>';
+        echo '<td><input type="radio" name="id" value=""/></td>';
+        echo '<td>' . $this->escape($projet['idClient']) . '</td>';
+        echo '<td>' . $this->escape($projet['nomProjet']) . '</td>';
+        echo '<td>' . $this->escape($projet['referent']) . '</td>';
+        echo '<td>' . $this->escape($projet['format']) . '</td>';
+        echo '<td>' . $this->escape($projet['numContrat']) . '</td>';
+        echo '<td>' . $this->escape($projet['duree']) . '</td>';
+        echo '<td>' . $this->escape($projet['debut']) . '</td>';
+        echo '<td>' . $this->escape($projet['fin']) . '</td>';
+        echo '<td>' . $this->escape($projet['responsable']) . '</td>';
+        echo '<td>' . $this->escape($projet['collaborateurs']) . '</td>';
+        echo '<td>' . $this->escape($projet['budget']) . '</td>';
+        echo '<td>' . $this->escape($projet['delai']) . '</td>';
+        echo '</tr>';
+    }
+    ?>
+    </tbody>
+    
+</table>
+<p>
+    <input class="submit" name="submit" type="submit" value="Submit">
+</p>
+</form>

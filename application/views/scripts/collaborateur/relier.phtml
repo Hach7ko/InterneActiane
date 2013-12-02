@@ -1,0 +1,59 @@
+<?php
+    $session = new Zend_Session_Namespace('identity');
+    if($session->idProfil == 2)
+    {
+        if(empty($this->allCollaborateur))
+        {
+            echo('il n\' ya aucun collaborateur');
+        }
+        else
+        { ?>
+
+
+<form method="post">
+	<div>
+		<label>Client</label>
+		<select name="idClient" required="required">
+			<?php 
+		    foreach($this->allClient as $client)
+		    {
+		    	$nom = $this->escape($client['nom']);
+		    	$idClient = $this->escape($client['id']);
+		    	echo("<option value='$idClient'>$nom</option>");
+		    }?>
+		<select/>
+	</div>
+	<div>
+		<label>Collaborateur</label>
+		<select name="idIdentite" required="required">
+			<?php 
+		    foreach($this->allCollaborateur as $collaborateur)
+		    {
+		    	$nom = $this->escape($collaborateur['nom']);
+		    	$prenom = $this->escape($collaborateur['prenom']);
+		    	$idCollab = $this->escape($collaborateur['id']);
+		    	echo("<option value='$idCollab'>$nom $prenom</option>");
+		    }?>
+		<select/>
+	</div>
+	<div>
+		<label for="dateDebut">Date de début</label>
+		<input type="date" name="dateDebut" required="required"/>
+	</div>
+	<div>
+		<label for="dateFin">Date de fin</label>
+		<input type="date" name="dateFin" required="required"/>
+	</div>
+	<p>
+		<input class="submit" name="submit" type="submit" value="Submit">
+	</p>
+	</form>
+
+<?php 
+        }
+    }
+    else
+    {
+        echo('<h2> Vous n\'avez pas les droits pour accéder à cette page. <h2/>');
+    }
+ ?>

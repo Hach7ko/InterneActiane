@@ -1,0 +1,15 @@
+<?php
+if (isset($this->aListeCra)):
+?>
+
+<table id="tableau">
+    <caption>Choisir un mois d'activité</caption>
+    <tbody>
+<?php foreach ($this->aListeCra as $aMonth): ?>
+        <tr>
+            <td><a href="/cra/exporter/year/<?php echo $aMonth['year']; ?>/month/<?php echo $aMonth['month']; ?>"><?php echo $aMonth['date']?></a></td>
+        </tr>
+<?php endforeach; ?>
+    </tbody>
+</table>
+<?php endif; ?>

@@ -1,0 +1,133 @@
+<?php echo $this->doctype(); ?>
+<html>
+	<head>
+
+		<?php echo $this->headMeta(); ?>
+		<?php echo $this->headTitle(); ?>
+		<?php echo $this->headLink(); ?>
+		<?php echo $this->headStyle(); ?>
+		<link href='http://fonts.googleapis.com/css?family=Jacques+Francois' rel='stylesheet' type='text/css'>
+				<?php $this->headScript()->appendFile('/js/jquery-2.0.2.min.js'); ?>
+<?php $this->headScript()->appendFile('/js/main.js'); ?>
+		<base href="<?php echo $this->baseUrl ?>">
+	</head>
+	
+	<body>
+
+		<header id="header">
+			<div id="logo"><img src="../css/images/logoactiane.png"></div>
+    		<div id="shadow"></div>
+		</header>
+		<?php
+		$session = new Zend_Session_Namespace('identity');
+		if($session->idProfil == 2)
+		{ ?>
+
+		<div id="nav">
+
+		 	<ul>
+		 		<li><a href="<?php echo $this->baseUrl ?>/">Accueil</a>
+		 		</li>
+		 		<li><a href="#">Client</a>
+		 			<ul class="submenu">
+		 				<li><a href="client/ajout">Ajouter Client</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/client/list">Lister Client</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/client/suppr">Supprimer Client</a></li>
+		 			</ul>
+		 		</li>
+		 		<li><a href="#">Projets</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/projet/creation">Création Projet</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/projet/suivi">Suivi Projet</a></li>
+		 			</ul>
+		 		</li>
+		 		<li><a href="#">Collaborateur</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/collaborateur/ajout">Ajouter Collaborateur</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/collaborateur/list">Lister Collaborateur</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/collaborateur/suppr">Supprimer Collaborateur</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/collaborateur/relier">Relier Collaborateur</a></li>
+		 			</ul>
+		 		</li>
+		 		<li><a href="#">Utilisateurs</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/utilisateurs/ajout">Ajouter Utilisateurs</a></li>
+		 			</ul>
+		 		</li>
+		 		<li><a href="#">Gestion du Temps de Travail</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/cra/saisir">Saisir CRA</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/cra/valider">Valider CRA</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/cra/exporter">Exporter CRA</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/conges/saisir">Saisir Congés</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/conges/valider">Valider Congés</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/conges/exporter">Exporter Congés</a></li>
+		 			</ul>
+		 		</li>
+		 	</ul>
+		</div>
+
+		<?php
+		}
+		else
+		{?>
+			<div id="nav">
+
+		 	<ul>
+		 		<li><a href="<?php echo $this->baseUrl ?>/">Accueil</a>
+		 		</li>
+		 		<li><a href="#">Client</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/client/list">Lister Client</a></li>
+		 			</ul>
+		 		</li>
+		 		<li><a href="#">Projets</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/projet/creation">Création Projet</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/projet/suivi">Suivi Projet</a></li>
+		 			</ul>
+		 		</li>
+		 		<li><a href="#">Collaborateur</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/collaborateur/list">Lister Collaborateur</a></li>
+		 			</ul>
+		 		</li>
+		 		<li><a href="#">Gestion du Temps de Travail</a>
+		 			<ul class="submenu">
+		 				<li><a href="<?php echo $this->baseUrl ?>/cra/saisir">Saisir CRA</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/cra/valider">Valider CRA</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/cra/exporter">Exporter CRA</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/conges/saisir">Saisir Congés</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/conges/valider">Valider Congés</a></li>
+		 				<li><a href="<?php echo $this->baseUrl ?>/conges/exporter">Exporter Congés</a></li>
+		 			</ul>
+		 		</li>
+		 	</ul>
+		</div>
+
+		<?php }
+
+		$session = new Zend_Session_Namespace('identity');
+		if(!empty($session)) :?>
+			<p><?php echo('Bonjour '.$session->prenom.' '.$session->nom.' !'); ?> <a href="<?php echo $this->baseUrl ?>/auth/logout">Logout</a></p>
+		<?php endif; ?>
+
+
+		<?php if(!empty($this->title)) :?>
+			<h1><?php echo $this->escape($this->title); ?></h1>
+		<?php endif; ?>
+
+		<div id="main">
+		<?php echo $this->layout()->content; ?>
+		</div>
+
+		<?php if(!empty($this->message)) :?>
+			<div class="message">
+				<?php echo $this->escape($this->message);?>
+			</div>
+		<?php endif; ?>
+
+		<?php echo $this->headScript(); ?>
+
+	</body>
+</html>

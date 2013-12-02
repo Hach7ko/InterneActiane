@@ -1,0 +1,73 @@
+<?php $this->headScript()->appendFile('/js/conges.js'); ?>
+
+<table id="tableau">
+<form method="post" name="form1">
+	<caption>Faire une demande de CP</caption>
+	<thead>
+		<th>Date de début </br> (Premier jour ouvré non travaillé)</th>
+		<th>Date de fin </br> (Dernier jour ouvré non travaillé inclus)</th>
+		<th>Type de congés</th>
+		<th>Journée/Matinée/Après-Midi</th>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td><input type="date" name="date1"/></td>
+			<td><input type="date" name="date2"/></td>
+			<td>
+				<select name="type"><?php foreach($this->allTypes as $typesconges){echo '<option value = ' . $this->escape($typesconges['id']) . '>' . $this->escape($typesconges['id']) . '</option>';}?>
+				</select>
+			</td>
+			<td>
+				<select name="journee">
+					<option value="journee">Journée</option>
+					<option value="matinee">Matinée</option>
+					<option value="aprem">Après-Midi</option>
+				</select>
+			</td>
+		</tr>
+	</tbody>
+</table>
+	<!-- <input type="button" onclick="addLigne(this); return false;" value="Ajouter une ligne"/> -->
+<p>
+	<input class="submit" name="submit" type="submit" value="Submit">
+</p>
+</form>
+
+
+<!-- <table id="tableau">
+	<form method="post">
+		<caption>Faire une demande de RTT</caption>
+		<thead>
+			<th>Date</th>
+			<th>Journée complète</th>
+			<th>Matin</th>
+			<th>Après-Midi</th>
+		</thead>
+		<tfoot></tfoot>
+		<tbody>
+			<tr>
+				<td><input type="date" name="jour"/></td>
+				<td>
+			      	<select name="journee" id="journee">
+			           <option value="oui">Oui</option>
+			           <option value="non">Non</option>
+			    </td>
+				<td>
+					<select name="matin" id="matin">
+			           <option value="oui">Oui</option>
+			           <option value="non">Non</option>
+				</td>
+				<td>
+					<select name="apresmidi" id="apresmidi">
+			           <option value="oui">Oui</option>
+			           <option value="non">Non</option>
+				</td>
+			</tr>
+		</tbody>
+</table>
+<p>
+	<input class="submit" name="submit" type="submit" value="Submit">
+</p>
+</form> -->

@@ -1,0 +1,92 @@
+<?php
+	$session = new Zend_Session_Namespace('identity');
+	if($session->idProfil == 2)
+	{
+?>
+
+<div class="ajoutClient">
+	<form action="<?php echo $this->baseUrl ?>/client/ajout" method="post">
+		<p>
+			<label for="secteur">Secteur</label>
+			<input type="text" name="secteur" value="" required="required"/>
+		</p>
+		<p>
+			<label for="societe">Société</label>
+			<input type="text" name="societe" value="" required="required"/>
+		</p>
+		<p>
+			<label for="siret">SIRET</label>
+			<input type="text" name="siret" value="" required="required"/>
+		</p>
+		<p>
+			<label for="tva">TVA intracommunautaire</label>
+			<input type="text" name="tva" value="" required="required"/>
+		</p>
+		<p>
+			<label for="entite">Entité</label>
+			<input type="text" name="entite" value="" required="required"/>
+		</p>
+
+		<p>
+			<label for="siege">Adresse Siège</label>
+			<input type="text" name="siege" value="" required="required"/>
+		</p>
+		<p>
+			<label for="facturation">Adresse Facturation</label>
+			<input type="text" name="facturation" value="" required="required"/>
+		</p>
+
+		<p>
+			<label for="principal">Contact Principal</label>
+			<input type="text" name="principal" value=""required="required"/>
+		</p>
+		<p>
+			<label for="telp">tél.</label>
+			<input type="tel" name="telp" value="" required="required"/>
+			<label for="mailp">Mail</label>
+			<input type="text" name="mailp" value="" required="required"/>
+		</p>
+
+		<p>
+			<label for="secondaire">Contact Secondaire</label>
+			<input type="text" name="secondaire" value="" required="required"/>
+		</p>
+		<p>
+			<label for="tels">tél.</label>
+			<input type="tel" name="tels" value="" required="required"/>
+			<label for="mails">Mail</label>
+			<input type="text" name="mails" value="" required="required"/>
+		</p>
+
+		<p>
+			<label for="compta">Contact Comptabilité</label>
+			<input type="text" name="compta" value="" required="required"/>
+		</p>
+		<p>
+			<label for="telc">tél.</label>
+			<input type="tel" name="telc" value="" required="required"/>
+			<label for="mailc">Mail</label>
+			<input type="text" name="mailc" value="" required="required"/>
+		</p>
+		<p>
+			<p>Interne</p>
+			<input type="radio" name="interne" value="1" cheked/><label for="interne">Oui</label>
+		    <input type="radio" name="interne" value="0"/> <label for="interne">Non</label>
+		</p>
+		<p>
+			<label for="couleur">Couleur</label>
+			<input type="color" name="couleur" value="" required="required"/>
+		</p>
+
+		<p>
+			<input class="submit" name="submit" type="submit" value="Submit">
+		</p>
+	</form>
+</div>
+<?php
+	}
+	else
+	{
+		echo('<h2> Vous n\'avez pas les droits pour accéder à cette page. <h2/>');
+	}
+?>

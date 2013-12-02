@@ -1,0 +1,19 @@
+<div class="validationUtilisateurs">
+	<form action="<?php echo $this->baseUrl ?>/utilisateurs/validation" method="post">
+		<p>
+			<label for="ancienMdp">Ancien Mot de Passe</label>
+			<input type="text" id="ancienMdp" name="ancienMdp" value="" required="required"/>
+		</p>
+		<p>
+			<label for="nouveauMdp">Nouveau Mot de Passe</label>
+			<input type="password" name="nouveauMdp" value="" required="required"/>
+		</p>
+		<p>
+			<label for="confirmMdp">Confirmer nouveau Mot de Passe</label>
+			<input type="password" name="confirmMdp" onpaste="alert('Vous ne pouvez pas coller ici.'); return false;" value="" required="required"/>
+		</p>
+		<p>
+			<input class="submit" name="submit" type="submit" value="submit">
+		</p>
+	</form>
+</div>

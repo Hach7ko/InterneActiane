@@ -1,0 +1,56 @@
+<form action="<?php echo $this->baseUrl ?>/projet/creation" method="post" id="loginform">
+	<p>
+		<label for="client">Client</label>
+		<input type="text" name="client" value=""/>
+	</p>
+	<p>
+		<label for="nomProjet">Nom de Projet</label>
+		<input type="text" name="nomProjet" value=""/>
+	</p>
+	<p>
+		<label for="referent">Référent Client</label>
+		<input type="text" name="referent" value=""/>
+	</p>
+	<p>
+		<label for="format">Format</label>
+		<input type="checkbox" name="regie" value="regie"/>Régie
+		<input type="checkbox" name="forfait" value="forfait"/>Forfait
+	</p>
+	<p>
+		<label for="numContrat">Numéro Contrat</label>
+		<input type="text" name="numContrat" value=""/>
+	</p
+	<p>
+		<label for="duree">Durée</label>
+		<input type="text" name="duree" value=""/>
+	</p>
+	<p>
+		<label for="debut">Date de démarrage</label>
+		<input type="date" name="debut"/>
+	</p>
+	<p>
+		<label for="fin">Date de fin prévisionnelle</label>
+		<input type="date" name="fin"/>
+	</p>
+	<p>
+		<label for="responsable">Responsable</label>
+		<input type="text" name="responsable"/>
+	</p>
+	<p>
+		<label for="collaborateurs">Collaborateurs</label>
+		<input type="text" name="collaborateurs"/>
+	</p>
+	<p>
+		<label for="budget">Budget</label>
+		<input type="text" name="budget"/>
+	</p>
+	<p>
+		<label for="delai">Délai de Paiement</label>
+			<input type="checkbox" name="30" value="30"/>30
+			<input type="checkbox" name="45" value="45"/>45
+			<input type="checkbox" name="60" value="60"/>60
+	</p>
+	<p>
+		<input class="submit" name="submit" type="submit" value="Submit">
+	</p>
+</form>

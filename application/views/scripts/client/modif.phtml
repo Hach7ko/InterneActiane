@@ -1,0 +1,100 @@
+<?php
+    $session = new Zend_Session_Namespace('identity');
+    if($session->idProfil == 2)
+    {
+        if(empty($this->allClients))
+        {
+            echo('il n\' ya aucun client');
+        }
+        else
+        { ?>
+
+
+<table class="modifClients">
+<form action="<?php echo $this->baseUrl ?>/client/update" method="post">
+	<caption>Clients</caption>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Couleur</th>
+            <th>Interne</th>
+            <th>Secteur</th>
+            <th>SIRET</th>
+            <th>TVA</th>
+
+        </tr>
+    </thead>
+    <tfoot>
+     <!-- <tfoot> is optionnal but if you want it, you NEED to place it before <tbody> --> 
+    </tfoot>
+    <tbody>
+    <tr>
+        <input name="id" value="<?php echo $this->escape($this->id); ?>" type="hidden" />
+    	<td><input name="nom" value="<?php echo $this->escape($this->oneClients['nom']); ?>" type="text" /></td>
+    	<td><input name="couleur" value="<?php echo $this->escape($this->oneClients['couleur']); ?>" type="color" /></td>
+    	<td><input name="interne" value="<?php echo $this->escape($this->oneClients['interne']); ?>" type="text" /></td>
+    	<td><input name="secteur" value="<?php echo $this->escape($this->oneClients['secteur']); ?>" type="text" /></td>
+    	<td><input name="siret" value="<?php echo $this->escape($this->oneClients['siret']); ?>" type="text" /></td>
+    	<td><input name="tva" value="<?php echo $this->escape($this->oneClients['tva']); ?>" type="text" /></td>   	
+    </tr>
+    </tbody>
+</table>
+<table class="modifClients">
+    <thead>
+        <tr>
+            <th>Entité</th>
+            <th>Siège</th>
+            <th>Facturation</th>
+            <th>Contact Principal</th>
+            <th>Téléphone (Principal)</th>
+            <th>Mail (Principal)</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <!-- <tfoot> is optionnal but if you want it, you NEED to place it before <tbody> -->
+    </tfoot>
+    <tbody>
+        <tr>
+            <td><input name="entite" value="<?php echo $this->escape($this->oneClients['entite']); ?>" type="text" /></td>
+            <td><input name="siege" value="<?php echo $this->escape($this->oneClients['siege']); ?>" type="text" /></td>
+            <td><input name="facturation" value="<?php echo $this->escape($this->oneClients['facturation']); ?>" type="text" /></td>
+            <td><input name="contactp" value="<?php echo $this->escape($this->oneClients['contactp']); ?>" type="text" /></td>
+            <td><input name="telp" value="<?php echo $this->escape($this->oneClients['telp']); ?>" type="text" /></td>
+            <td><input name="mailp" value="<?php echo $this->escape($this->oneClients['mailp']); ?>" type="text" /></td>
+
+        </tr>
+    </tbody>
+</table>
+<table class="modifClients">
+    <thead>
+            <th>Contact Secondaire</th>
+            <th>Téléphone (Secondaire)</th>
+            <th>Mail (Secondaire)</th>
+            <th>Contact Comptable</th>
+            <th>Téléphone (Comptable)</th>
+            <th>Mail (Comptable)</th>
+    </thead>
+    <tfoot>
+        <!-- <tfoot> is optionnal but if you want it, you NEED to place it before <tbody> -->
+    </tfoot>
+    <tbody>
+            <td><input name="contacts" value="<?php echo $this->escape($this->oneClients['contacts']); ?>" type="text" /></td>
+            <td><input name="tels" value="<?php echo $this->escape($this->oneClients['tels']); ?>" type="text" /></td>
+            <td><input name="mails" value="<?php echo $this->escape($this->oneClients['mails']); ?>" type="text" /></td>
+            <td><input name="contactc" value="<?php echo $this->escape($this->oneClients['contactc']); ?>" type="text" /></td>
+            <td><input name="telc" value="<?php echo $this->escape($this->oneClients['telc']); ?>" type="text" /></td>
+            <td><input name="mailc" value="<?php echo $this->escape($this->oneClients['mailc']); ?>" type="text" /></td>
+    </tbody>
+</table>
+<p>
+    <input class="submit" name="submit" type="submit" value="Submit">
+</p>
+</form>
+<?php 
+        }
+    }
+    else
+    {
+        echo('Vous n\'avez pas les droits pour accéder à cette page.');
+    }
+ ?>

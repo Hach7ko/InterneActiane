@@ -1,0 +1,256 @@
+/*----- Général-----*/
+
+body{
+    font-family: 'Jacques Francois', serif;
+    font-size: 17px;
+    background-image: url('images/whitepaper.png'); 
+}
+
+ul{
+    list-style: none;
+}
+
+h2, h3{
+    text-align: center;
+    margin-top: 50px;
+}
+/*-----Header-----*/
+#header{
+        height:170px;
+        width:100%;
+        background-image: url('images/greypaper.png');
+        background-repeat: repeat;
+}
+
+#shadow{
+        height:11px;
+        background-image: url('images/shadow.png');
+        background-repeat: repeat-x;
+}
+
+#logo{
+        height: 128px;
+        width:311px;
+        margin:0 auto; 
+        padding-top:30px;
+}     
+
+.message {
+        color: red;
+}
+
+.clear {
+        clear: both;
+}
+
+.ajoutClient {
+        font-weight: bold;
+ }
+
+ .ajoutCollaborateur {
+        font-weight: bold;
+ }
+
+
+ /*------------------------Navigation---------------------------------------*/
+#nav{
+        height:32px;
+        line-height:32px;
+        padding:0 10px;
+        width:100%;
+        background-image: url('images/greypaper.png');
+        background-repeat: repeat;
+        margin-top: 20px;
+        margin-bottom: 15px;
+}
+
+#nav ul, #nav ul li {
+        margin:0;
+        padding:0;
+        list-style:none;
+}
+
+#nav ul li{
+        float:left;
+        display:block;
+}
+
+#nav ul li a:link, #nav ul li a:visited{
+        color:#FFF;
+        text-decoration:none;
+        padding:0 20px 0 6px;
+        display:block;
+}
+
+#nav ul li a:hover{
+        color:#EBEBEE;
+}
+
+#nav ul li ul li{
+        float:none;
+        display:block;
+}
+
+#nav ul li ul li a:link, #nav ul li ul li a:visited{
+        color:#444;
+        text-decoration:none;
+        padding:0 10px;
+        clear:both;
+        border-bottom:solid 1px #DEDEDE;
+}
+
+#nav ul li ul li a:hover{
+        background:#EBEBEE;
+}
+
+.submenu {
+        position: absolute;
+        width: 160px;
+        background: #FFFFFF;
+        padding: 10px;
+        border: solid 1px #000000;
+        border-top: none;
+        display: none;
+        line-height: 26px;
+        z-index: 1000;
+}
+
+/*----------------------Formulaire-------------------------*/
+
+h1{
+        width:498px;
+        height:64px;
+        background:url('images/greypaper.png');
+        color:#FFFFFF;
+        padding:17px 0px 0px 78px;
+        letter-spacing:1px;
+        font-size:2.2em;
+        margin:0 auto;
+}
+
+form{
+        width:100%;
+}
+
+label{
+        display:block;
+        margin-top:20px;
+        letter-spacing:2px;
+}
+
+input, textarea{
+        width:439px;
+        background:#efefef;
+        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border:1px solid #dedede;
+        margin-top:3px;
+        font-size:0.9em;
+        color:#3a3a3a;
+}
+
+input:focus, textarea:focus{
+        border:1px solid #060707;
+}
+
+input[readonly="readonly"] {
+    background-color: #CCC;
+    color: #FF0000;
+    cursor: not-allowed;
+}
+
+.submit{
+        background:url(images/envoyer.png);
+        width:88px;
+        height:33px;
+        text-indent:-9999px;
+        border:none;
+        margin-top:20px;
+        cursor:pointer;
+}
+
+.submit:hover{
+        opacity:0.9;
+}
+
+.ajoutClient input, textarea{
+    width: 300px;
+    padding: 0%px;
+    margin: 0px;
+}
+.modifClients input, textarea{
+    width: 100px;
+}
+/*-----------------------------Tableau-------------------------*/
+caption{
+        font-size: 18px;
+        margin-bottom: 10px;
+}
+table input{
+     width:15px;   
+}
+
+table{
+    font-size: 14px;
+    text-align: left;
+    border-collapse: collapse;
+    padding-bottom: 15px;
+}
+
+table th{
+    font-size: 16px;
+    font-weight: normal;
+    padding: 8px;
+    background: #8F8F8F repeat-x;
+    border-top: 2px solid #979797;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+table td{
+    padding: 8px;
+    border-bottom: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    background: #DCDCDC repeat-x;
+    
+}
+
+/*table tfoot tr td{
+    background: #e8edff;
+    font-size: 16px;
+    color: #99c;
+    text-align:center;
+}*/
+
+table tbody tr:hover td{
+    background: #E9E9E9 repeat-x;
+}
+
+table a:hover{
+    text-decoration:underline;
+}
+
+#tableau {
+    width: 100%;
+}
+
+#tableau input, textarea{
+    width: 150px;
+    padding: 0%px;
+    margin: 0px;
+}
+
+/*-----------------------------Conges-------------------------*/
+
+.conges{
+    border: 2px solid grey;
+    margin-bottom: 10px;
+    width: 500px;
+}
+
+.noWorkLine td {
+    background-color: #A8A8A8;
+}
+.noWorkLine:hover td {
+    background-color: #AFAFAF;
+}

@@ -1,0 +1,76 @@
+<?php
+    $session = new Zend_Session_Namespace('identity');
+    if($session->idProfil == 2)
+    {
+        if(empty($this->allClients))
+        {
+            echo('il n\' ya aucun collaborateur');
+        }
+        else
+        { ?>
+
+
+<form action="<?php echo $this->baseUrl ?>/collaborateur/update" method="post">
+<table border = "1">
+	<caption>Clients</caption>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Acronyme</th>
+            <th>Mail</th>
+            <th>Adresse</th>
+            <th>date de Naissance</th>
+            <th>Lieu de Naissance</th>
+            <th>Téléphone</th>
+            <th>Date d'entrée</th>
+            <th>Statut</th>
+            <th>Position</th>
+            <th>Coefficient</th>
+            <th>Intitulé de Poste</th>
+            <th>Compétences Fonctionnelles</th>
+            <th>Compétences Techniques</th>
+            <th>Responsable</th>
+            <th>Equipe</th>
+            <th>TJM</th>
+        </tr>
+    </thead>
+    <tfoot>
+     <!-- //<tfoot> is optionnal but if you want it, you NEED to place it before <tbody> --> 
+
+    </tfoot>
+    <tbody>
+    <tr>
+        <input name="id" value="<?php echo $this->escape($this->id); ?>" type="hidden" />
+    	<td><input name="nom" value="<?php echo $this->escape($this->oneCollaborateurs['nom']); ?>" type="text" size ="7"/></td>
+    	<td><input name="prenom" value="<?php echo $this->escape($this->oneCollaborateurs['prenom']); ?>" type="text" size ="7"/></td>
+    	<td><input name="acronyme" value="<?php echo $this->escape($this->oneCollaborateurs['acronyme']); ?>" type="text" size ="7"/></td>
+    	<td><input name="mail" value="<?php echo $this->escape($this->oneCollaborateurs['mail']); ?>" type="text" /></td>
+    	<td><input name="adresse" value="<?php echo $this->escape($this->oneCollaborateurs['adresse']); ?>" type="text" size ="7"/></td>
+    	<td><input name="dateNaissance" value="<?php echo $this->escape($this->oneCollaborateurs['dateNaissance']); ?>" type="text" size ="7"/></td>
+    	<td><input name="lieuNaissance" value="<?php echo $this->escape($this->oneCollaborateurs['lieuNaissance']); ?>" type="text" size ="7"/></td>
+    	<td><input name="telephone" value="<?php echo $this->escape($this->oneCollaborateurs['telephone']); ?>" type="text" size ="7"/></td>
+    	<td><input name="dateEntree" value="<?php echo $this->escape($this->oneCollaborateurs['dateEntree']); ?>" type="text" size ="7"/></td>
+    	<td><input name="intitule" value="<?php echo $this->escape($this->oneCollaborateurs['intitule']); ?>" type="text" size ="7"/></td>
+    	<td><input name="statut" value="<?php echo $this->escape($this->oneCollaborateurs['statut']); ?>" type="text" size ="7"/></td>
+    	<td><input name="position" value="<?php echo $this->escape($this->oneCollaborateurs['position']); ?>" type="text" size ="7"/></td>
+    	<td><input name="coefficient" value="<?php echo $this->escape($this->oneCollaborateurs['coefficient']); ?>" type="text" size ="7"/></td>
+    	<td><input name="competencesf" value="<?php echo $this->escape($this->oneCollaborateurs['competencesf']); ?>" type="text" size ="7"/></td>
+    	<td><input name="competencest" value="<?php echo $this->escape($this->oneCollaborateurs['competencest']); ?>" type="text" size ="7"/></td>
+    	<td><input name="equipe" value="<?php echo $this->escape($this->oneCollaborateurs['equipe']); ?>" type="text" size ="7"/></td>
+    	<td><input name="responsable" value="<?php echo $this->escape($this->oneCollaborateurs['responsable']); ?>" type="text" size ="7"/></td>
+    	<td><input name="tjm" value="<?php echo $this->escape($this->oneCollaborateurs['tjm']); ?>" type="text" size ="7"/></td>
+    </tr>
+    </tbody>
+</table>
+
+<td><input type="submit" name="modif" value="Modifier" /></td>
+</form>
+<?php 
+        }
+    }
+    else
+    {
+        echo('Vous n\'avez pas les droits pour accéder à cette page.');
+    }
+ ?>

@@ -1,0 +1,31 @@
+<?php
+	$session = new Zend_Session_Namespace('identity');
+	if($session->idProfil == 2)
+	{
+?>
+
+Pour ajouter un nouvel utilisateur, rentrez juste son login et son adresse mail, nous nous occuperons de lui envoyez un mail avec son login et son mot de passe qu'il devra changer.
+
+<div class="ajoutUtilisateurs">
+	<form action="<?php echo $this->baseUrl ?>/utilisateurs/ajout" method="post">
+		<p>
+			<label for="login">login</label>
+			<input type="text" name="login" value="" required="required"/>
+		</p>
+		<p>
+			<label for="mail">mail</label>
+			<input type="text" name="mail" value="" required="required"/>
+		</p>
+		<p>
+			<input class="submit" name="submit" type="submit" value="submit">
+		</p>
+	</form>
+</div>
+
+<?php
+	}
+	else
+	{
+		echo('<h2> Vous n\'avez pas les droits pour accéder à cette page. <h2/>');
+	}
+?>
