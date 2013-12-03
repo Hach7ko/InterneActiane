@@ -27,59 +27,82 @@ je ne peux pas boucler par projet pour chaque élément et créer le tableau cor
     <thead>
         <tr>
             <th>Projets</th>
-            <?php
+        
+        <?php
+       
         $index = 0;
         foreach ($this->allDays as $aDay) {
             $noWork = ($aDay['weekend'] == true || $aDay['publicHoliday'] == true);
             $isValidation = (isset($aDay['validation']) && $aDay['validation'] > 0);
             $idProjetDay = (isset($aDay['idCollaboration']) ? $aDay['idCollaboration'] : null); 
         } 
+
         $projets = $this->aProjets;
         for($k = 0; $k < count($projets); $k++) {
             $projet = $projets[$k];
-            if(count($projets) == 0){
-                $projet = '';
-            }        ?>
+            
+            if(count($projets) == 0)
+                $projet = ''; ?>
+
             <th><input type="text" name="projet[]" size="7" value="<?php echo $projet?>"></th>
-        <?php } ?>
+        
+        <?php }?>
         </tr>
+
     </thead>
+
     <tfoot>
     </tfoot> 
-    <tbody>
-    <?php
 
+    <tbody>
     
-    $allDate = $this->aDays;
+    <?php
     $i = 0;
+
     foreach ($this->allDays as $aDay) { 
     ?>
     <tr>     
-        <td><input type="date" name="jour[]" size="7" value="<?php echo $this->escape($aDay['date']); ?>" readonly="readonly" /></td>
+        
+        <td>
+            <input type="date" name="jour[]" size="7" value="<?php echo $this->escape($aDay['date']); ?>" readonly="readonly" />
+        </td>
+
+        <?php 
+        $allData = $this->aData;
+        $date = $aDay['date'];
+        for($k = 0, $nb = count($projets); $k < $nb; $k++) {
+            
+            $projet = $projets[$k];
+            $checkedAM = '';
+            $checkedPM = '';
+           
+            for($l = 0, $number = count($allData[$projet]['lignes']); $l < $number; $l++) {
+                if($allData[$projet]['lignes'][$l]['jour'] == $date && $projet == $allData[$projet]['lignes'][$l]['projet']) {
+
+                    if($allData[$projet]['lignes'][$l]['AM'] == 1)
+                        $checkedAM = 'checked';
+                    
+                    if($allData[$projet]['lignes'][$l]['PM'] == 1)
+                        $checkedPM = 'checked';
+
+                }
+            }
+            ?> 
+
         <td>
             AM
-            <input type="hidden" name="matin[<?php echo $i?>]" value="0" />
-            <input type="checkbox" name="matin[<?php echo $i?>]"value="1" <?php echo (($isValidation) ? 'readonly="readonly" ' : ''); ?>/>
+            <input type="checkbox" name="matin[<?php echo $i?>]"value="1" <?php echo (($isValidation) ? 'readonly="readonly" ' : ''); echo $checkedAM?>/>
             
             PM
-            <input type="hidden" name="apresMidi[<?php echo $i?>]" value="0" />
-            <input type="checkbox" name="apresMidi[<?php echo $i?>]"value="1" <?php echo (($isValidation) ? 'readonly="readonly" ' : ''); ?>/>
-        </td>
+            <input type="checkbox" name="apresMidi[<?php echo $i?>]"value="1" <?php echo (($isValidation) ? 'readonly="readonly" ' : ''); echo $checkedAM?>/>
+        </td> 
+
+        <?php }?>
+        
     </tr>
         <?php 
         $i++;
-    }?>
-        <!-- <tr id="ligne_<?php //echo $index++; ?>" class="<?php// echo $noWork ? 'noWorkLine' : ''; ?>">
-            <td><input type="text" name="projet[]" size="7"?></td>
-            <td><input type="date" name="jour[]" size="7" value="<?php //echo $this->escape($aDay['date']); ?>" readonly="readonly" /></td>
-            <?php $iMatinDay //= (//isset($aDay['matin']) ? $aDay['matin'] / 60 : null); ?>
-            <td><input type="checkbox" name="matin[]" <?php// echo ($iMatinDay !== null) ? 'value="1" ' : ''; echo (($isValidation) ? 'readonly="readonly" ' : ''); ?>/></td>
-            <?php $iApremDay //= (//isset($aDay['apresMidi']) ? $aDay['apresMidi'] / 60 : null); ?>
-            <td><input type="checkbox" name="apresMidi[]" <?php //echo ($iApremDay !== null) ? 'value="1" ' : ''; echo (($isValidation) ? 'readonly="readonly" ' : ''); ?>/></td>
-            <td><input type="text" name="commentaires[]" size="7"?></td>
-            <td><input type="hidden" name="validation[]" value="<?php //echo isset($aDay['validation']) ? $aDay['validation'] : '0';?>"/><a href="#" onclick="delLigne(this); return false;">Supprimer</a></td>
-        </tr>
-         -->
+    }?>  
     </tbody>
 </table>
 

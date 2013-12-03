@@ -34,7 +34,7 @@ class Actiane_Cra extends Actiane_Db_Table
                         $result = $oCra->getIdByAllCra($idUtilisateur, $jour, $matin, $apresMidi, $projet);
                         $idCra = $result['craId'];
 
-                        //Si il n'existe pas création et insertiond des données
+                        //Si il n'existe pas création et insertion des données
                         if($idCra === false) {
                             $row = $this->createRow();
                             $row['jour'] = $jour;

@@ -92,48 +92,22 @@ class CraController extends Zend_Controller_Action {
             $get = $oCra->selectByIdUtilisateur($id, $dayDb, $allDb);
 
             //Tableau jours et projets ainsi que le CRA complet  pour le phtml
-            $days = array();
             $projets = array();
-            $allCra = array();
-            
+            $allData = array();
+
             for($i = 0, $nb = count($get); $i < $nb; $i++) {
-                
                 $projet = $get[$i]['projet'];
-                
-                if(!in_array($projet, $allCra))
-                    array_push($allCra, $projet);
 
-                var_dump($allCra);
-            }
-            die();
-
-            /*Etant donné que je n'arrive pas à ordonner les données dans un tableau 3D
-            Impossible d'organiser correctement le for pour les envoyer dans le phtml*/
-            for($i = 0, $nb = count($get); $i < $nb; $i++) {
-                
-                $projet = $get[$i]['projet'];
-                $jour = $get[$i]['jour'];
-
-                if(!in_array($projet, $projets)) {
+                if(!in_array($projet, $projets))
                     array_push($projets, $projet);
-                }
-
-                $jour = str_split($jour);
-
-                for($k = 0; $k < count($jour); $k++) {
-                    if($k >= 9) {
-                        if($jour[8] == '0') {
-                            $day = "$jour[9]";
-                            array_push($days, $day);
-                        } else {
-                            $day = "$jour[8]$jour[9]";
-                            array_push($days, $day);
-                        }
-                    }
-                }
+               
+                if (!isset($allData[$projet]))
+                    $allData[$projet] = array('projet' => $projet, 'lignes' => array($get[$i]));
+                else
+                    $allData[$projet]['lignes'][] = $get[$i];
             }
 
-            $this->view->aDays = $days;
+            $this->view->aData = $allData;
             $this->view->aProjets = $projets;
 
             $this->_prepareCra($this->year, $this->month);
